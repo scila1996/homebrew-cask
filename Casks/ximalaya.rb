@@ -1,6 +1,6 @@
 cask "ximalaya" do
-  version "3.3.2,GMCoOSIHmtAEACAAAAHtXOj6,d30a,C3,5F"
-  sha256 "d9df40de6df0f944f885e6dea3e03986ad8313f32aad6f52048117342da04c63"
+  version "4.0.0,GMCoOSMIGmpqACAAAAISmOuF,9198,26,49"
+  sha256 "61e157e303e27f11ccdb328a62e2930540d818c07fb01fdb1dc4b8ca25ccf3fc"
 
   url "https://nativedl.pcdn.xmcdn.com/storages/#{version.csv.third}-audiofreehighqps/#{version.csv.fourth}/#{version.csv.fifth}/#{version.csv.second}.dmg?ct=application/octet-stream&filename=Ximalaya_#{version.csv.first}_x64_c_99",
       verified: "nativedl.pcdn.xmcdn.com/storages/"
@@ -11,13 +11,21 @@ cask "ximalaya" do
 
   livecheck do
     url "https://www.ximalaya.com/down/lite/v2?client=mac&channelId=99"
-    strategy :header_match do |headers|
-      match = headers["location"].match(%r{storages/(.+)-aud.*?/(.+)/(.+)/(.+)\.dmg.*?Ximalaya[._-](\d+(?:\.\d+)+)}i)
-      next if match.blank?
-
-      "#{match[5]},#{match[4]},#{match[1]},#{match[2]},#{match[3]}"
+    regex(%r{storages/(.+)-aud.*?/(.+)/(.+)/(.+)\.dmg.*?Ximalaya[._-](\d+(?:\.\d+)+)}i)
+    strategy :header_match do |headers, regex|
+      headers["location"].scan(regex).map do |match|
+        "#{match[4]},#{match[3]},#{match[0]},#{match[1]},#{match[2]}"
+      end
     end
   end
 
   app "喜马拉雅.app"
+
+  zap trash: [
+    "~/Library/Application Support/喜马拉雅",
+    "~/Library/Application Support/Ximalaya SetUp",
+    "~/Library/Logs/喜马拉雅",
+    "~/Library/Preferences/com.gemd.iting.plist",
+    "~/Library/Saved Application State/com.gemd.iting.savedState",
+  ]
 end

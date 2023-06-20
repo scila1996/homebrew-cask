@@ -1,6 +1,6 @@
 cask "dash-dash" do
-  version "18.2.1"
-  sha256 "b1c8f75aab3a748c21fb946019e21a27dc40370fccf0e0eca5ee39e4ab2622b9"
+  version "19.1.0"
+  sha256 "4ff370e904f08f9b31727535c5ccdde616d7cdee2fb9396aa887910fc87702ff"
 
   url "https://github.com/dashpay/dash/releases/download/v#{version}/dashcore-#{version}-osx.dmg",
       verified: "github.com/dashpay/dash/"
@@ -18,4 +18,10 @@ cask "dash-dash" do
   preflight do
     set_permissions "#{staged_path}/Dash-Qt.app", "0755"
   end
+
+  zap trash: [
+    "~/Library/Application Support/DashCore",
+    "~/Library/Preferences/org.dash.Dash-Qt.plist",
+    "~/Library/Saved Application State/org.dash.Dash-Qt.savedState",
+  ]
 end

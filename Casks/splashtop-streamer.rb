@@ -1,6 +1,6 @@
 cask "splashtop-streamer" do
-  version "3.5.2.2"
-  sha256 "d3616c74dc68981548ef2bf91d0f716a39d13f08fdb8c07e29c303b91237107a"
+  version "3.5.8.1"
+  sha256 "6bd0996c9fed834bf81d555753445a9ef13def8b4f37293a301afcc957b7f0e0"
 
   url "https://d17kmd0va0f0mp.cloudfront.net/mac/Splashtop_Streamer_Mac_INSTALLER_v#{version}.dmg",
       verified: "d17kmd0va0f0mp.cloudfront.net/"
@@ -25,4 +25,9 @@ cask "splashtop-streamer" do
               "com.splashtop.streamer-srioframebuffer",
             ],
             pkgutil:   "com.splashtop.Splashtop-Streamer"
+
+  zap trash: [
+    "Library/Application Support/Splashtop Streamer",
+    "Library/Preferences/com.splashtop.Splashtop-Streamer.plist",
+  ]
 end

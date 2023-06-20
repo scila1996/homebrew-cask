@@ -1,6 +1,6 @@
 cask "microsoft-teams" do
-  version "1.5.00.33356"
-  sha256 "741fc105209b922f8ba20018d46f4096f95f175cf0e162e8bbe92a8f3644e5aa"
+  version "1.6.00.12966"
+  sha256 "9d9c298a3cc233c077a507cbe5f277667a30ff38b76443d96605320a0fd6f625"
 
   url "https://statics.teams.cdn.office.net/production-osx/#{version}/Teams_osx.pkg",
       verified: "statics.teams.cdn.office.net/production-osx/"
@@ -24,6 +24,7 @@ cask "microsoft-teams" do
   end
 
   auto_updates true
+  conflicts_with cask: "microsoft-office-businesspro"
 
   pkg "Teams_osx.pkg"
 
@@ -33,6 +34,7 @@ cask "microsoft-teams" do
             ],
             launchctl: "com.microsoft.teams.TeamsUpdaterDaemon",
             delete:    [
+              "/Applications/Microsoft Teams.app",
               "/Library/Logs/Microsoft/Teams",
               "/Library/Preferences/com.microsoft.teams.plist",
             ]

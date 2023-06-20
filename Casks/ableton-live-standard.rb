@@ -1,14 +1,8 @@
 cask "ableton-live-standard" do
-  arch = "intel"
-  version "11.2.7"
-  sha256 "51bffe5e3ab58c943cabbd605964e74c26535e9b993a3cb76b7a7d230150ec75"
+  version "11.3.3"
+  sha256 "194c3179c926006eac934afcc82a91aedac4af9559c7d236544f728a0bb32036"
 
-  on_mojave :or_newer do
-    arch = "universal"
-    sha256 "cf5fca1d93534d97f672731b94ea235e9d06906b4081076122af9ccd5e455d99"
-  end
-
-  url "https://cdn-downloads.ableton.com/channels/#{version}/ableton_live_standard_#{version}_#{arch}.dmg"
+  url "https://cdn-downloads.ableton.com/channels/#{version}/ableton_live_standard_#{version}_universal.dmg"
   name "Ableton Live Standard"
   desc "Sound and music editor"
   homepage "https://www.ableton.com/en/live/"

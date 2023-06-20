@@ -1,9 +1,9 @@
 cask "mellel" do
-  version "5.1.3,51301"
-  sha256 "e832ae7e3944dcd48448a3c13b701c4e66ac0e16d3d2dca16368de32e70408fa"
+  version "5.1.5,51503"
+  sha256 "70e4d4ebe84a42de4cd1d53ab1346752e2d35b806508453b92848700e073f4b2"
 
   url "https://d1riogbqt3a9uw.cloudfront.net/mellel_#{version.csv.second}.dmg",
-      verified: "d1riogbqt3a9uw.cloudfront.net"
+      verified: "d1riogbqt3a9uw.cloudfront.net/"
   name "Mellel"
   desc "Advanced word processor built for long and complex documents"
   homepage "https://www.mellel.com/"
@@ -24,13 +24,13 @@ cask "mellel" do
 
   zap trash: [
     "~/Library/Application Scripts/com.redlex.mellel",
-    "~/Library/Application Support/Mellel #{version.major}",
     "~/Library/Application Support/com.redlex.mellel#{version.major}",
+    "~/Library/Application Support/Mellel #{version.major}",
     "~/Library/Caches/com.redlex.mellel#{version.major}",
     "~/Library/HTTPStorages/com.redlex.mellel#{version.major}",
     "~/Library/HTTPStorages/com.redlex.mellel#{version.major}.binarycookies",
     "~/Library/Preferences/com.redlex.mellel#{version.major}.plist",
-    "~/Library/Saved Application State/com.redlex.MellelUpdater.savedState",
     "~/Library/Saved Application State/com.redlex.mellel#{version.major}.savedState",
+    "~/Library/Saved Application State/com.redlex.MellelUpdater.savedState",
   ]
 end

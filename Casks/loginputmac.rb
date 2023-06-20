@@ -1,6 +1,6 @@
 cask "loginputmac" do
-  version "3.2.5,9581"
-  sha256 "0fa9d1ed619431fe8c9320e4c8097806614a9a0001dabc2ebb8e6b3565cb9b39"
+  version "3.2.8"
+  sha256 "23dd3f062e554b3121996abc748e7907febefa4ee8f022a2771d7aa4a3f890a9"
 
   url "https://loginput-mac2.totest.top/loginputmac#{version.major}_latest.dmg",
       verified: "loginput-mac2.totest.top/"
@@ -10,11 +10,11 @@ cask "loginputmac" do
 
   livecheck do
     url "https://im.logcg.com/appcast#{version.major}.xml"
-    strategy :sparkle
+    strategy :sparkle, &:short_version
   end
 
   auto_updates true
-  depends_on macos: ">= :mojave"
+  depends_on macos: ">= :high_sierra"
 
   pkg "落格输入法 macOS #{version.major}.pkg"
 

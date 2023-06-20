@@ -1,6 +1,6 @@
 cask "xamarin-mac" do
-  version "9.0.0.27,c8bc547f-869e-4d64-a271-f8b3a29ee545,4fbfc55453fe36fe5bf4128d6d495911"
-  sha256 "996542292606cadb8b5b47f8fe5f78a31fde4e43184af29133d22cafda93549c"
+  version "9.3.0.6,b4928191-de3d-42cb-a24f-709e5d71626c,586143733de41c62d8b6179d7eeaf3e5"
+  sha256 "2fb94ef86efff8f4a523db652eeaca9cc46dcabd5e426889c094907185045a80"
 
   url "https://download.visualstudio.microsoft.com/download/pr/#{version.csv.second}/#{version.csv.third}/xamarin.mac-#{version.csv.first}.pkg"
   name "Xamarin Mac"
@@ -22,4 +22,6 @@ cask "xamarin-mac" do
   pkg "xamarin.mac-#{version.csv.first}.pkg"
 
   uninstall pkgutil: "com.xamarin.mac-.*"
+
+  zap trash: "~/Library/Caches/com.xamarin.fontconfig"
 end

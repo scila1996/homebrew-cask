@@ -1,6 +1,6 @@
 cask "kubenav" do
-  version "4.0.1"
-  sha256 "0e73d8fca6f625b6e46eb09ac98ed91d756144de15612428aa259b1ab9eebf03"
+  version "4.2.2"
+  sha256 "5feee1f53910d090c5ab70174aa2665937cc1a74c7fd5aec9a1fb63583d77ab1"
 
   url "https://github.com/kubenav/kubenav/releases/download/v#{version}/kubenav-macos-universal.zip",
       verified: "github.com/kubenav/kubenav/"
@@ -10,4 +10,6 @@ cask "kubenav" do
 
   app "kubenav.app"
   binary "#{appdir}/kubenav.app/Contents/MacOS/kubenav"
+
+  zap trash: "~/Library/Saved Application State/io.kubenav.kubenav.savedState"
 end

@@ -1,9 +1,9 @@
 cask "rstudio" do
-  version "2022.12.0,353"
-  sha256 "fd4bebb5b030c81c0b0dbdd782960c564a0eb037e243435a8265fcbcb03563b5"
+  version "2023.06.0,421"
+  sha256 "37ced5647fbb8ed5ea48f2b1b96ddef1ad09a24039e7e2419af8ac21c16f3d5c"
 
   url "https://download1.rstudio.org/electron/macos/RStudio-#{version.csv.first}-#{version.csv.second}.dmg",
-      verified: "download1.rstudio.org/"
+      verified: "download1.rstudio.org/electron/macos/"
   name "RStudio"
   desc "Data science software focusing on R and Python"
   homepage "https://www.rstudio.com/"
@@ -18,7 +18,6 @@ cask "rstudio" do
     end
   end
 
-  conflicts_with cask: "homebrew/cask-versions/rstudio-preview"
   depends_on macos: ">= :high_sierra"
 
   app "RStudio.app"

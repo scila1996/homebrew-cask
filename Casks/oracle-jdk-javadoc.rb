@@ -1,6 +1,6 @@
 cask "oracle-jdk-javadoc" do
-  version "19.0.2,7,fdb695a9d9064ad6b064dc6df578380c"
-  sha256 "f7f978225836e96cb0729f1341a26a55e33801b5091eee44f7a11080256f56ae"
+  version "20.0.1,9,b4887098932d415489976708ad6d1a4b"
+  sha256 "36f9fa700951cb53373554be69337294ab92269f45ddce66db8c9575fbf94a8f"
 
   url "https://download.oracle.com/otn_software/java/jdk/#{version.csv.first}+#{version.csv.second}/#{version.csv.third}/jdk-#{version.csv.first}_doc-all.zip",
       cookies: {
@@ -21,6 +21,8 @@ cask "oracle-jdk-javadoc" do
   artifact "docs", target: "/Library/Java/JavaVirtualMachines/jdk-#{version.csv.first}.jdk/Contents/Home/docs"
 
   uninstall rmdir: "/Library/Java/JavaVirtualMachines/jdk-#{version.csv.first}.jdk"
+
+  # No zap stanza required
 
   caveats do
     license "https://download.oracle.com/otndocs/jcp/java_se-#{version.major}-final-spec/license.html"

@@ -1,10 +1,10 @@
 cask "proxyman" do
-  version "4.1.0,41000"
-  sha256 "0ccf60be408eaf7452d4bfd3ee5b174f9fb1fe650a7dc0c8a5fd2e53df2ca051"
+  version "4.8.0,48000"
+  sha256 "1d1325eba69ad884841f9251e9273500d0ec406f8ee2c2559d8ddc0dfa6d42df"
 
   url "https://download.proxyman.io/#{version.csv.second}/Proxyman_#{version.csv.first}.dmg"
   name "Proxyman"
-  desc "Modern and intuitive HTTP Debugging Proxy app"
+  desc "HTTP debugging proxy"
   homepage "https://proxyman.io/"
 
   livecheck do
@@ -36,12 +36,12 @@ cask "proxyman" do
     "~/.proxyman*",
     "~/Library/Application Support/com.proxyman",
     "~/Library/Application Support/com.proxyman.NSProxy",
-    "~/Library/Caches/Proxyman",
     "~/Library/Caches/com.proxyman.NSProxy",
+    "~/Library/Caches/Proxyman",
     "~/Library/Cookies/com.proxyman.binarycookies",
     "~/Library/Cookies/com.proxyman.NSProxy.binarycookies",
-    "~/Library/Preferences/com.proxyman.plist",
     "~/Library/Preferences/com.proxyman.NSProxy.plist",
+    "~/Library/Preferences/com.proxyman.plist",
     "~/Library/Saved Application State/com.proxyman.NSProxy.savedState",
   ]
 end

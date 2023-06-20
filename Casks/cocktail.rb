@@ -66,8 +66,8 @@ cask "cocktail" do
     end
   end
   on_monterey do
-    version "15.3.9"
-    sha256 "d6a3278369b5deb67b2c667aa861b0c9331241b2ad1c0a3c83e9776642750be6"
+    version "15.5"
+    sha256 "fc27a3bacb1fbf3bff2e2978870ad1819952746508df3ed6ab3fb24b844ed214"
 
     url "https://www.maintain.se/downloads/Cocktail#{version.major}ME.dmg"
 
@@ -77,14 +77,14 @@ cask "cocktail" do
     end
   end
   on_ventura :or_newer do
-    version "16.2.1"
-    sha256 "606b307ad985d42f7260bf378470127e3b15bece625950b1dd108330f3aa4781"
+    version "16.3.5"
+    sha256 "a39974f01ae1f7aed2067a395ad8197a4ce0de8dfda4b4ec1f85b779e13646f8"
 
     url "https://www.maintain.se/downloads/Cocktail#{version.major}VE.dmg"
 
     livecheck do
-      url :homepage
-      regex(/macOS\s*13(?:\.\d+)*.*?(\d+(?:\.\d+)+)/i)
+      url :url
+      strategy :extract_plist
     end
   end
 
@@ -93,4 +93,9 @@ cask "cocktail" do
   homepage "https://www.maintain.se/cocktail/"
 
   app "Cocktail.app"
+
+  zap trash: [
+    "~/Library/Preferences/com.maintain.cocktail.plist",
+    "~/Library/Preferences/com.maintain.cocktail.ventura#{version.major}.plist",
+  ]
 end

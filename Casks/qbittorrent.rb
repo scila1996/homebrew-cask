@@ -8,13 +8,13 @@ cask "qbittorrent" do
     end
   end
   on_mojave :or_newer do
-    version "4.5.0"
-    sha256 "9979e1013ea02b41ff09e9881c2702876e5bf290f5b724e0239060e61a31d6a7"
+    version "4.5.4"
+    sha256 "86f6b73da30ab14e7f7e7ac829b1bbf67469340ecd099a527a3661b8e5da82b0"
 
     livecheck do
       url "https://sourceforge.net/projects/qbittorrent/rss?path=/qbittorrent-mac"
+      regex(/qbittorrent[._-]v?(\d+(?:\.\d+)+)\.dmg/i)
       strategy :page_match
-      regex(/qbittorrent-(\d+(?:\.\d+)+)\.dmg/i)
     end
   end
 
@@ -24,6 +24,7 @@ cask "qbittorrent" do
   desc "Peer to peer Bitorrent client"
   homepage "https://www.qbittorrent.org/"
 
+  conflicts_with cask: "homebrew/cask-versions/qbittorrent-lt20"
   depends_on macos: ">= :high_sierra"
 
   # Renamed for consistency: app name is different in the Finder and in a shell.

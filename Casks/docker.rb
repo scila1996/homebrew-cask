@@ -1,9 +1,29 @@
 cask "docker" do
   arch arm: "arm64", intel: "amd64"
 
-  version "4.16.2,95914"
-  sha256 arm:   "838eabe6cc42fe7e4be2cdb4d73924c61fc7982366dac2a9467793845851cb2e",
-         intel: "22eecb8ea07f10892d81cde07d614fb8b342163106133a75c4280a8e28787643"
+  on_catalina :or_older do
+    version "4.15.0,93002"
+    sha256 arm:   "fc8609d57fb8c8264122f581c0f66497e46e171f8027d85d90213527d6226362",
+           intel: "bee41d646916e579b16b7fae014e2fb5e5e7b5dbaf7c1949821fd311d3ce430b"
+
+    livecheck do
+      skip "Legacy version"
+    end
+
+    depends_on macos: ">= :catalina"
+  end
+  on_big_sur :or_newer do
+    version "4.20.1,110738"
+    sha256 arm:   "24869f0ba82b6fab37d09e6f13df091d59f5f878ba325c99d3b36bf67858ccf9",
+           intel: "f0af9a5bf1309d1628d67a693ba67c0373a4bbeab165499d4cdb903ee60a9213"
+
+    livecheck do
+      url "https://desktop.docker.com/mac/main/#{arch}/appcast.xml"
+      strategy :sparkle
+    end
+
+    depends_on macos: ">= :big_sur"
+  end
 
   url "https://desktop.docker.com/mac/main/#{arch}/#{version.csv.second}/Docker.dmg"
   name "Docker Desktop"
@@ -12,11 +32,6 @@ cask "docker" do
   desc "App to build and share containerized applications and microservices"
   homepage "https://www.docker.com/products/docker-desktop"
 
-  livecheck do
-    url "https://desktop.docker.com/mac/main/#{arch}/appcast.xml"
-    strategy :sparkle
-  end
-
   auto_updates true
   conflicts_with formula: %w[
     docker
@@ -24,49 +39,71 @@ cask "docker" do
     docker-compose
     docker-compose-completion
     docker-credential-helper-ecr
-    hyperkit
-    kubernetes-cli
   ]
-  depends_on macos: ">= :catalina"
 
   app "Docker.app"
-  binary "#{appdir}/Docker.app/Contents/Resources/etc/docker.bash-completion",
+  binary "Docker.app/Contents/Resources/bin/com.docker.cli",
+         target: "/usr/local/bin/com.docker.cli"
+  binary "Docker.app/Contents/Resources/bin/docker",
+         target: "/usr/local/bin/docker"
+  binary "Docker.app/Contents/Resources/bin/docker-compose",
+         target: "/usr/local/bin/docker-compose"
+  binary "Docker.app/Contents/Resources/bin/docker-compose-v1/docker-compose",
+         target: "/usr/local/bin/docker-compose-v1"
+  binary "Docker.app/Contents/Resources/bin/docker-credential-desktop",
+         target: "/usr/local/bin/docker-credential-desktop"
+  binary "Docker.app/Contents/Resources/bin/docker-credential-ecr-login",
+         target: "/usr/local/bin/docker-credential-ecr-login"
+  binary "Docker.app/Contents/Resources/bin/docker-credential-osxkeychain",
+         target: "/usr/local/bin/docker-credential-osxkeychain"
+  binary "Docker.app/Contents/Resources/bin/docker-index",
+         target: "/usr/local/bin/docker-index"
+  binary "Docker.app/Contents/Resources/bin/hub-tool",
+         target: "/usr/local/bin/hub-tool"
+  binary "Docker.app/Contents/Resources/bin/kubectl",
+         target: "/usr/local/bin/kubectl.docker"
+  binary "Docker.app/Contents/Resources/bin/com.docker.vpnkit",
+         target: "/usr/local/bin/vpnkit"
+  binary "Docker.app/Contents/Resources/etc/docker.bash-completion",
          target: "#{HOMEBREW_PREFIX}/etc/bash_completion.d/docker"
-  binary "#{appdir}/Docker.app/Contents/Resources/etc/docker-compose.bash-completion",
+  binary "Docker.app/Contents/Resources/etc/docker-compose.bash-completion",
          target: "#{HOMEBREW_PREFIX}/etc/bash_completion.d/docker-compose"
-  binary "#{appdir}/Docker.app/Contents/Resources/etc/docker.zsh-completion",
+  binary "Docker.app/Contents/Resources/etc/docker.zsh-completion",
          target: "#{HOMEBREW_PREFIX}/share/zsh/site-functions/_docker"
-  binary "#{appdir}/Docker.app/Contents/Resources/etc/docker-compose.zsh-completion",
+  binary "Docker.app/Contents/Resources/etc/docker-compose.zsh-completion",
          target: "#{HOMEBREW_PREFIX}/share/zsh/site-functions/_docker_compose"
-  binary "#{appdir}/Docker.app/Contents/Resources/etc/docker.fish-completion",
+  binary "Docker.app/Contents/Resources/etc/docker.fish-completion",
          target: "#{HOMEBREW_PREFIX}/share/fish/vendor_completions.d/docker.fish"
-  binary "#{appdir}/Docker.app/Contents/Resources/etc/docker-compose.fish-completion",
+  binary "Docker.app/Contents/Resources/etc/docker-compose.fish-completion",
          target: "#{HOMEBREW_PREFIX}/share/fish/vendor_completions.d/docker-compose.fish"
 
+  postflight do
+    kubectl_target = Pathname("/usr/local/bin/kubectl")
+
+    # Only link if `kubernetes-cli` is not installed.
+    next if kubectl_target.exist?
+
+    system_command "/bin/ln", args: ["-sfn", staged_path/"Docker.app/Contents/Resources/bin/kubectl", kubectl_target],
+                              sudo: !kubectl_target.dirname.writable?
+  end
+
+  uninstall_postflight do
+    kubectl_target = Pathname("/usr/local/bin/kubectl")
+
+    if kubectl_target.symlink? && kubectl_target.readlink == staged_path/"Docker.app/Contents/Resources/bin/kubectl"
+      system_command "/bin/rm", args: [kubectl_target],
+                                sudo: !kubectl_target.dirname.writable?
+    end
+  end
+
   uninstall delete:    [
+              "/Library/PrivilegedHelperTools/com.docker.socket",
               "/Library/PrivilegedHelperTools/com.docker.vmnetd",
-              "/usr/local/bin/com.docker.cli",
-              "/usr/local/bin/docker-compose-v1",
-              "/usr/local/bin/docker-compose",
-              "/usr/local/bin/docker-credential-desktop",
-              "/usr/local/bin/docker-credential-ecr-login",
-              "/usr/local/bin/docker-credential-osxkeychain",
-              "/usr/local/bin/docker",
-              "/usr/local/bin/hub-tool",
-              "/usr/local/bin/hyperkit",
-              "/usr/local/bin/kubectl.docker",
-              "/usr/local/bin/kubectl",
-              "/usr/local/bin/notary",
-              "/usr/local/bin/vpnkit",
-              "#{HOMEBREW_PREFIX}/share/zsh/site-functions/_docker",
-              "#{HOMEBREW_PREFIX}/share/zsh/site-functions/_docker_compose",
-              "#{HOMEBREW_PREFIX}/share/fish/vendor_completions.d/docker.fish",
-              "#{HOMEBREW_PREFIX}/share/fish/vendor_completions.d/docker-compose.fish",
-              "#{HOMEBREW_PREFIX}/etc/bash_completion.d/docker",
-              "#{HOMEBREW_PREFIX}/etc/bash_completion.d/docker-compose",
             ],
+            rmdir:     "~/.docker/bin",
             launchctl: [
               "com.docker.helper",
+              "com.docker.socket",
               "com.docker.vmnetd",
             ],
             quit:      "com.docker.docker"
@@ -76,6 +113,7 @@ cask "docker" do
         "/usr/local/bin/docker.backup",
         "~/.docker",
         "~/Library/Application Scripts/com.docker.helper",
+        "~/Library/Application Scripts/group.com.docker",
         "~/Library/Application Support/com.bugsnag.Bugsnag/com.docker.docker",
         "~/Library/Application Support/Docker Desktop",
         "~/Library/Caches/com.docker.docker",
@@ -84,6 +122,7 @@ cask "docker" do
         "~/Library/Containers/com.docker.docker",
         "~/Library/Containers/com.docker.helper",
         "~/Library/Group Containers/group.com.docker",
+        "~/Library/HTTPStorages/com.docker.docker",
         "~/Library/HTTPStorages/com.docker.docker.binarycookies",
         "~/Library/Logs/Docker Desktop",
         "~/Library/Preferences/com.docker.docker.plist",

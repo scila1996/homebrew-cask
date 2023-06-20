@@ -1,11 +1,11 @@
 cask "shadow" do
   arch arm: "arm64", intel: "x64"
 
-  version "8.0.10046"
-  sha256 arm:   "2365ecb0bb066ffb9bca0a31dfcb6d93f69c76eb62d90134f58d9df72b021f79",
-         intel: "a039cee238aca5c58e2a8339c193ed4bd616de78994f72efc2ccd3069181fcda"
+  version "8.0.10123"
+  sha256 arm:   "df7939f8d4b6e3489a2e8e717b6b2fc47b59f2cc8508150b4c10989a99ab353b",
+         intel: "e4e47d675c02217aa3901217daaf40b6d6237e4830c4598a3f596a1ff5f04aa5"
 
-  url "https://update.shadow.tech/launcher/prod/mac/#{arch}/Shadow-#{version}.dmg"
+  url "https://update.shadow.tech/launcher/prod/mac/#{arch}/ShadowPC-#{version}.dmg"
   name "Shadow"
   desc "Online virtualized computer"
   homepage "https://shadow.tech/"
@@ -15,7 +15,7 @@ cask "shadow" do
     strategy :electron_builder
   end
 
-  app "Shadow.app"
+  app "Shadow PC.app"
 
   zap trash: [
     "~/Library/Application Support/Shadow",

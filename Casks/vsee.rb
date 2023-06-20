@@ -1,9 +1,9 @@
 cask "vsee" do
-  version "4.16.2,50377"
-  sha256 "180c734fa59bf204eb7f479d8e2b50e27a520d6ffa9e685c5c6a5f6663739359"
+  version "4.18.0,50709"
+  sha256 "6fca488d005d3df98ff8d46d2840e4d2526113d51a2ad9030e96d2db1a16542c"
 
   url "https://d2q5hugz2rti4w.cloudfront.net/mac/#{version.csv.second}/vseemac.dmg",
-      verified: "d2q5hugz2rti4w.cloudfront.net/"
+      verified: "d2q5hugz2rti4w.cloudfront.net/mac/"
   name "VSee"
   desc "Group video calls, screen sharing and instant messaging"
   homepage "https://vsee.com/"
@@ -13,7 +13,7 @@ cask "vsee" do
     strategy :sparkle
   end
 
-  depends_on macos: ">= :el_capitan"
+  depends_on macos: ">= :catalina"
 
   app "VSee.app"
 

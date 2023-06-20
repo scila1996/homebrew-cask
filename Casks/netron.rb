@@ -1,6 +1,6 @@
 cask "netron" do
-  version "6.5.1"
-  sha256 "79f1449385c6d47948a5c951e57377a468f259e5bcf267a31cbdfc6261a727be"
+  version "6.9.9"
+  sha256 "56be5ae864a2bf3645a0e646e70e43d908bfddff92d6105be553e7d4044f7ddf"
 
   url "https://github.com/lutzroeder/netron/releases/download/v#{version}/Netron-#{version}-mac.zip"
   name "Netron"
@@ -10,4 +10,10 @@ cask "netron" do
   auto_updates true
 
   app "Netron.app"
+
+  zap trash: [
+    "~/Library/Application Support/Netron",
+    "~/Library/Preferences/com.lutzroeder.netron.plist",
+    "~/Library/Saved Application State/com.lutzroeder.netron.savedState",
+  ]
 end

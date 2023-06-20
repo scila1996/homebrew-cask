@@ -1,12 +1,12 @@
 cask "coscreen" do
   arch arm: "arm64", intel: "x64"
 
-  version "4.5.24"
-  sha256 arm:   "dcc2a63fa2128c3e446c5cb59f198989fea74e17886e8ac75434d716411af055",
-         intel: "1ff331122c3913ce52f707c4c2b957b5b6d1eb370dca434f199f17eaed03142e"
+  version "5.3.15"
+  sha256 arm:   "9923aa799c057245b936b95db396a51984f8f99c5a019fe9a627b7b1c5f69d70",
+         intel: "6169a6f589906ac084f8cf47850f1707fa5107b025da7bb5048b2eaac64e6426"
 
   url "https://update.coscreen.org/CoScreen-#{version}-stable-#{arch}.dmg",
-      verified: "https://update.coscreen.org/"
+      verified: "update.coscreen.org/"
   name "CoScreen"
   desc "Collaboration tool with multi-user screen sharing"
   homepage "https://www.coscreen.co/"

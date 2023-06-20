@@ -1,9 +1,9 @@
 cask "headlamp" do
   arch arm: "arm64", intel: "x64"
 
-  version "0.14.1"
-  sha256 arm:   "2def838c3995e0df21dce245d880f325d3e4d9c11b0c82ea0753253f730dc665",
-         intel: "1923beef3b381ebe8fa77285fd63f41c26ea1a99f0286b579f9877d67444ab31"
+  version "0.18.0"
+  sha256 arm:   "872972d38c6080fc940ee28d3e41d46358ab32878664adb4eee580f92324eeb8",
+         intel: "bea70e42c788c8edcfc4c504ad8a77b6e0133aa2d28fe0a2e246a2efb80fa95f"
 
   url "https://github.com/kinvolk/headlamp/releases/download/v#{version}/Headlamp-#{version}-mac-#{arch}.dmg",
       verified: "github.com/kinvolk/headlamp/"

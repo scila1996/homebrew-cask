@@ -1,65 +1,65 @@
 cask "orion" do
-  version "0.99,122"
+  version "0.99,124.3"
 
-  on_mojave do
-    sha256 "7771ff6d39b4169e991233acc6ef14702ddf8c1603a151b32f2782d07e93a0ce"
+  on_mojave :or_older do
+    sha256 "247c8a9d43b85cf5fe38791dbf7f3947751f866ba0e9a3af8491ea50a49857c4"
 
     url "https://browser.kagi.com/updates/10_14/#{version.csv.second}.zip"
 
     livecheck do
-      url "https://browser.kagi.com/updates/10_14/appcast.xml"
+      url "https://cdn.kagi.com/updates/10_14/appcast.xml"
       strategy :sparkle
     end
 
-    depends_on macos: :mojave
+    depends_on macos: ">= :mojave"
   end
   on_catalina do
-    sha256 "0a4788f91735faa57a091348855d974e07ae8356c1b944780338ec3c03d48cc6"
+    sha256 "4710a0d3d313ccf72cd0c3c520bd075ec39f1a9decfc03e244b2b95a9fb993d0"
 
     url "https://browser.kagi.com/updates/10_15/#{version.csv.second}.zip"
 
     livecheck do
-      url "https://browser.kagi.com/updates/10_15/appcast.xml"
+      url "https://cdn.kagi.com/updates/10_15/appcast.xml"
       strategy :sparkle
     end
 
     depends_on macos: :catalina
   end
   on_big_sur do
-    sha256 "d2bf100f0f706df318dcc5807604f94e4864598bc45d6173d50cefc7327ca35b"
+    sha256 "84b7a48e10885c44bd05481fe2b1ea9f7c21bd5982c44857befb155f2d6fdb3e"
 
     url "https://browser.kagi.com/updates/11_0/#{version.csv.second}.zip"
 
     livecheck do
-      url "https://browser.kagi.com/updates/11_0/appcast.xml"
+      url "https://cdn.kagi.com/updates/11_0/appcast.xml"
       strategy :sparkle
     end
 
     depends_on macos: :big_sur
   end
   on_monterey do
-    sha256 "799cb362caad3020be49e836967eebf835a53ce167097853d2a37ae3cb3dbcda"
+    sha256 "3b07ab4ec931e86d0818dfc5ee28fad2c645f6a8f230d7e82c94596276701f49"
 
     url "https://browser.kagi.com/updates/12_0/#{version.csv.second}.zip"
 
     livecheck do
-      url "https://browser.kagi.com/updates/12_0/appcast.xml"
+      url "https://cdn.kagi.com/updates/12_0/appcast.xml"
       strategy :sparkle
     end
 
     depends_on macos: :monterey
   end
-  on_ventura do
-    sha256 "635b32f4fdd5a8bb6da238eed6895b571633b965d1d381fd5b03003178b5b9d6"
+  on_ventura :or_newer do
+    sha256 "2db71b134a209c06c44dd4dc357e609f7fcf03a9408b53bb41864716b9e273de"
 
     url "https://browser.kagi.com/updates/13_0/#{version.csv.second}.zip"
 
     livecheck do
-      url "https://browser.kagi.com/updates/13_0/appcast.xml"
+      url "https://cdn.kagi.com/updates/13_0/appcast.xml"
       strategy :sparkle
     end
 
-    depends_on macos: :ventura
+    depends_on macos: "<= :ventura"
   end
 
   name "Orion Browser"

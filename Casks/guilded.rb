@@ -1,6 +1,6 @@
 cask "guilded" do
-  version "1.0.9161723"
-  sha256 "3ecb8a7f9684a754474d525fc2b7088d2085af7f1a10f35f6c638a1a3aea989c"
+  version "1.0.9199744"
+  sha256 "20e96f4992edda79ec8b47a7e3053133394b4218f5d2c4e6f0f92633783d5392"
 
   url "https://s3-us-west-2.amazonaws.com/www.guilded.gg/AppBuilds/mac/Guilded-#{version}-release.dmg",
       verified: "s3-us-west-2.amazonaws.com/www.guilded.gg/AppBuilds/mac/"

@@ -1,15 +1,15 @@
 cask "cardhop" do
-  version "2.2.5,1126"
-  sha256 "06c3a7fee58716121f2a8dd812c4f0187c82356a95bda8d8496969830e508bf4"
+  version "2.2.8"
+  sha256 "23c4f71fef5169c8e0ebb86012d7d963cfceb2c72f7d4ec87e47655a4d04d8db"
 
-  url "https://cdn.flexibits.com/Cardhop_#{version.csv.first}.zip"
+  url "https://cdn.flexibits.com/Cardhop_#{version}.zip"
   name "Cardhop"
   desc "Contacts manager"
   homepage "https://flexibits.com/cardhop"
 
   livecheck do
     url "https://flexibits.com/cardhop/appcast.php"
-    strategy :sparkle
+    strategy :sparkle, &:short_version
   end
 
   auto_updates true
@@ -22,11 +22,11 @@ cask "cardhop" do
 
   zap trash: [
     "~/Library/Application Scripts/com.flexibits.cardhop.mac",
-    "~/Library/Application Scripts/com.flexibits.cardhop.mac.launcher",
     "~/Library/Application Scripts/com.flexibits.cardhop.mac.BluetoothDialer",
+    "~/Library/Application Scripts/com.flexibits.cardhop.mac.launcher",
     "~/Library/Containers/com.flexibits.cardhop.mac",
-    "~/Library/Containers/com.flexibits.cardhop.mac.launcher",
     "~/Library/Containers/com.flexibits.cardhop.mac.BluetoothDialer",
+    "~/Library/Containers/com.flexibits.cardhop.mac.launcher",
     "~/Library/Preferences/com.flexibits.cardhop.mac.plist",
   ]
 end

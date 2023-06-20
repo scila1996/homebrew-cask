@@ -1,14 +1,14 @@
 cask "masscode" do
   arch arm: "-arm64"
 
-  version "3.5.0"
-  sha256 arm:   "005bf5b9b8ee1921ccf7236c9db67684beed23fb31b41e0d5134921a69d9e08c",
-         intel: "267c8fc05fe069fdaea182df49ac3aded7e7dee1b28a0681f0675a79ed12df93"
+  version "3.7.0"
+  sha256 arm:   "99e1bb681af61b190db98012eaa179d441c5eeeb28c3a7811cd2fb1be69f897c",
+         intel: "9cb708bddb096c7b16eff76574ae0cf23bc41e02fbf5c3667fd18a94ad655123"
 
   url "https://github.com/massCodeIO/massCode/releases/download/v#{version}/massCode-#{version}#{arch}.dmg",
-      verified: "https://github.com/massCodeIO/massCode/"
+      verified: "github.com/massCodeIO/massCode/"
   name "massCode"
-  desc "Open-source code snippets manager for developers"
+  desc "Code snippets manager for developers"
   homepage "https://masscode.io/"
 
   livecheck do
@@ -17,4 +17,11 @@ cask "masscode" do
   end
 
   app "massCode.app"
+
+  zap trash: [
+        "~/Library/Application Support/massCode",
+        "~/Library/Preferences/io.masscode.app.plist",
+        "~/Library/Saved Application State/io.masscode.app.savedState",
+      ],
+      rmdir: "~/massCode"
 end

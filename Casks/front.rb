@@ -1,12 +1,12 @@
 cask "front" do
   arch arm: "arm64", intel: "x64"
 
-  version "3.40.16"
-  sha256 arm:   "ae449cb7c20c5374e75860928886dda83ed480793cc1229371c5b9d8ea2c40ec",
-         intel: "7c92e9f57ff5e611578b25c5a6d17d766cd4f98ef874d9a20edc6850485d977c"
+  version "3.42.12"
+  sha256 arm:   "426bb3d15b572391e099866918c87d131c157b8d327742abc262df3747a14a19",
+         intel: "a8a85cfba9e4bd4e7c439f4c84e2f0f48e913a43b6fd7cdca7f936476c3dbd05"
 
   url "https://dl.frontapp.com/desktop/builds/#{version}/Front-#{version}-#{arch}.zip",
-      verified: "dl.frontapp.com/desktop/builds"
+      verified: "dl.frontapp.com/desktop/builds/"
   name "Front"
   desc "Customer communication platform"
   homepage "https://front.com/"

@@ -1,6 +1,6 @@
 cask "enclave" do
-  version "2023.01.18"
-  sha256 "3f4110686f17c6c866ab965e49d7d61925d21261a858643fb813a7c3d48e1009"
+  version "2023.6.6"
+  sha256 "4a270aefa5c4c3d1bab385a71efd7b0df1a1c66a1b0bd7d7275ec639a3b918bf"
 
   url "https://release.enclave.io/enclave_osx-installer-x64-stable-#{version}.pkg"
   name "Enclave"
@@ -9,7 +9,7 @@ cask "enclave" do
 
   livecheck do
     url "https://install.enclave.io/latest/osx-homebrew-version.txt"
-    regex(/(\d+(?:\.\d+)*)/i)
+    regex(/(\d+(?:\.\d+)+(?:\.hotfix\d+)?)/i)
   end
 
   pkg "enclave_osx-installer-x64-stable-#{version}.pkg"

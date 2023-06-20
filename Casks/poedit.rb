@@ -1,15 +1,15 @@
 cask "poedit" do
-  version "3.2.2,6555"
-  sha256 "059a8726434b19a3661db324ef3004fd9943024687f701fb354573220cd9c260"
+  version "3.3.1"
+  sha256 "7578479f3c8b7a36970144d9e200cc8c55ba7413366371e416cfbafbceb48ca8"
 
-  url "https://download.poedit.net/Poedit-#{version.csv.first}.zip"
+  url "https://download.poedit.net/Poedit-#{version}.zip"
   name "Poedit"
   desc "Translation editor"
   homepage "https://poedit.net/"
 
   livecheck do
     url "https://poedit.net/updates_v2/osx/appcast"
-    strategy :sparkle
+    strategy :sparkle, &:short_version
   end
 
   auto_updates true

@@ -1,6 +1,6 @@
 cask "hbuilderx" do
-  version "3.6.18.20230117"
-  sha256 "c9977fb75dafa782aed0cbd4792c2042aa51b7f0a86cb71ff60ccb5179996510"
+  version "3.8.4.20230531"
+  sha256 "45a69f80805d2764dec904d297172effeae66aacd003359db32b4abcbcfa8bdc"
 
   url "https://download1.dcloud.net.cn/download/HBuilderX.#{version}.dmg",
       verified: "download1.dcloud.net.cn/download/"
@@ -10,8 +10,8 @@ cask "hbuilderx" do
 
   livecheck do
     url "https://download1.dcloud.net.cn/hbuilderx/release.json"
-    strategy :page_match do |page|
-      JSON.parse(page)["version"]
+    strategy :json do |json|
+      json["version"]
     end
   end
 

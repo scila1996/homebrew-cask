@@ -1,21 +1,14 @@
 cask "biscuit" do
-  version "1.2.27"
+  arch arm: "-arm64"
 
-  on_intel do
-    sha256 "4eff2c48e3ce24af3ffeb814ed46f5a21406516b0c094763f5896e73bc82bd9b"
+  version "1.2.29"
+  sha256 arm:   "75a92e65c7cc8be6296abf6e85dc4feb5c8314df4e0971cd4ab24549eef445ed",
+         intel: "a869a9907fb8da48372a4da2b300a5660b6e11bf460d473821ca0a3b096eb4ea"
 
-    url "https://github.com/agata/dl.biscuit/releases/download/v#{version}/Biscuit-#{version}.dmg",
-        verified: "github.com/agata/dl.biscuit/"
-  end
-  on_arm do
-    sha256 "b2bd9101f9eec59430db3586387cf5bcd077b06115f244ecdff9de1f4f329ac4"
-
-    url "https://github.com/agata/dl.biscuit/releases/download/v#{version}/Biscuit-#{version}-arm64.dmg",
-        verified: "github.com/agata/dl.biscuit/"
-  end
-
+  url "https://github.com/agata/dl.biscuit/releases/download/v#{version}/Biscuit-#{version}#{arch}.dmg",
+      verified: "github.com/agata/dl.biscuit/"
   name "Biscuit"
-  desc "Browser to organize apps"
+  desc "Browser to organise apps"
   homepage "https://eatbiscuit.com/"
 
   auto_updates true

@@ -49,18 +49,28 @@ cask "powerphotos" do
       skip "Legacy version"
     end
   end
-  on_big_sur :or_newer do
-    version "2.1.6,1946"
+  on_big_sur do
+    version "2.1.8"
+    sha256 "b9fbf7b188e157b20b779611d5fd4f922574d8818517f4341a538c06bbfcd88d"
+
+    url "https://www.fatcatsoftware.com/powerphotos/downloads/PowerPhotos_#{version.no_dots}.zip"
+
+    livecheck do
+      skip "Legacy version"
+    end
+  end
+  on_monterey :or_newer do
+    version "2.4"
     sha256 :no_check
 
     url "https://www.fatcatsoftware.com/powerphotos/PowerPhotos.zip"
 
     livecheck do
       url "https://www.fatcatsoftware.com/powerphotos/downloads/appcast.xml"
-      strategy :sparkle
+      strategy :sparkle, &:short_version
     end
 
-    depends_on macos: ">= :big_sur"
+    depends_on macos: ">= :monterey"
   end
 
   name "PowerPhotos"
@@ -70,4 +80,16 @@ cask "powerphotos" do
   auto_updates true
 
   app "PowerPhotos.app"
+
+  zap trash: [
+    "~/Library/Application Scripts/8NQ43ND65V.com.fatcatsoftware.PowerPhotosLibraryList",
+    "~/Library/Application Support/com.fatcatsoftware.PowerPhotos",
+    "~/Library/Caches/com.fatcatsoftware.PowerPhotos",
+    "~/Library/Caches/com.plausiblelabs.crashreporter.data/com.fatcatsoftware.PowerPhotos",
+    "~/Library/Group Containers/8NQ43ND65V.com.fatcatsoftware.PowerPhotosLibraryList",
+    "~/Library/HTTPStorages/com.fatcatsoftware.PowerPhotos",
+    "~/Library/Logs/PowerPhotos",
+    "~/Library/Preferences/com.fatcatsoftware.PowerPhotos.plist",
+    "~/Library/Saved Application State/com.fatcatsoftware.PowerPhotos.savedState",
+  ]
 end

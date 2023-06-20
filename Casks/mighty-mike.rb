@@ -1,6 +1,6 @@
 cask "mighty-mike" do
-  version "3.0.1"
-  sha256 "8c772b2777ac29b52775c9ce8b4281406fe62f0d4565d478112c15408b3a2efc"
+  version "3.0.2"
+  sha256 "7643e45f480ef148655ab76790b8fa5b7688f041bf174244f8741e285e6092d9"
 
   url "https://github.com/jorio/MightyMike/releases/download/v#{version}/MightyMike-#{version}-mac.dmg",
       verified: "github.com/jorio/MightyMike/"
@@ -9,7 +9,7 @@ cask "mighty-mike" do
   homepage "https://jorio.itch.io/mightymike"
 
   app "Mighty Mike.app"
-  artifact "Documentation", target: "#{Dir.home}/Library/Application Support/MightyMike"
+  artifact "Documentation", target: "~/Library/Application Support/MightyMike"
 
   zap trash: [
     "~/Library/Preferences/MightyMike",

@@ -1,18 +1,28 @@
 cask "prezi-next" do
-  version "1.60.0,27393"
-  sha256 "7b8d4675faca122534331d383811eff5a7b6da815d486a1bc969aa5869ac9bfb"
+  version "1.63.0"
+  sha256 "6fa4e5858881d8bd8b8258129ad7f50f5d03471666b154bdcfe0fd799b671683"
 
-  url "https://desktopassets.prezi.com/mac/pitch/releases/Prezi_Next_#{version.csv.first}.dmg"
+  url "https://desktopassets.prezi.com/mac/pitch/releases/Prezi_Next_#{version}.dmg"
   name "Prezi Next"
   desc "Presentation software"
   homepage "https://prezi.com/"
 
   livecheck do
     url "https://prezidesktop.s3.amazonaws.com/assets/mac/pitch/updates/prezi-business.xml"
-    strategy :sparkle
+    strategy :sparkle, &:short_version
   end
 
   depends_on macos: ">= :el_capitan"
 
   app "Prezi Next.app"
+
+  zap trash: [
+    "~/Library/Application Support/com.prezi.pitch.desktop",
+    "~/Library/Caches/com.prezi.pitch.desktop",
+    "~/Library/HTTPStorages/com.prezi.pitch.desktop",
+    "~/Library/Logs/Prezi Next",
+    "~/Library/Logs/Prezi Next_debug.log",
+    "~/Library/Preferences/com.prezi.pitch.desktop.plist",
+    "~/Library/Saved Application State/com.prezi.pitch.desktop.savedState",
+  ]
 end

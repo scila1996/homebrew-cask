@@ -1,6 +1,6 @@
 cask "reunion" do
-  version "13.0.0,221018unr"
-  sha256 "e9ee78ff97c7eab4dd43a4c06d0c31ceda916c62b609ce643a5f1b33d7c9be50"
+  version "13.0.0,230307unr"
+  sha256 "3a762752c3d562ecdf9bf75179e44af0a4b52046b19f81f7689c7ae6b398b324"
 
   url "https://store.leisterpro.com/updates/reunion#{version.major}/Reunion-#{version.csv.first.dots_to_hyphens}-#{version.csv.second}.zip"
   name "Reunion"
@@ -9,11 +9,11 @@ cask "reunion" do
 
   livecheck do
     url "https://store.leisterpro.com/updates/reunion#{version.major}/appcast.xml"
-    strategy :sparkle do |item|
-      match = item.url.match(%r{/Reunion-(\d+(?:-\d+)*)-(\d+.*?)\.zip}i)
-      next if match.blank?
-
-      "#{match[1].tr("-", ".")},#{match[2]}"
+    regex(%r{/Reunion-(\d+(?:-\d+)*)-(\d+.*?)\.zip}i)
+    strategy :sparkle do |item, regex|
+      item.url.scan(regex).map do |match|
+        "#{match[0].tr("-", ".")},#{match[1]}"
+      end
     end
   end
 

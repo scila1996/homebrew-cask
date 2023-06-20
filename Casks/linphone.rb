@@ -1,6 +1,6 @@
 cask "linphone" do
-  version "5.0.8"
-  sha256 "3b0f82cb8ac3b37b506b3ea8235d7deebde31d0f076a4f5c504bad6df38b41f0"
+  version "5.0.17"
+  sha256 "e9df0ab30235b6e5dedbe2a1ef3cf5a142f200a24e66785e5494ac9dc0f39449"
 
   url "https://download.linphone.org/releases/macosx/app/Linphone-#{version}-mac.dmg"
   name "Linphone"
@@ -13,4 +13,13 @@ cask "linphone" do
   end
 
   app "Linphone.app"
+
+  zap trash: [
+    "~/Documents/linphone",
+    "~/Library/Application Support/linphone",
+    "~/Library/Preferences/com.belledonnecommunications.linphone.plist",
+    "~/Library/Preferences/com.linphone.linphone.plist",
+    "~/Library/Preferences/linphone",
+    "~/Library/Saved Application State/com.belledonnecommunications.linphone.savedState",
+  ]
 end

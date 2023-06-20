@@ -1,8 +1,8 @@
 cask "menubarx" do
-  version "1.5.5,157"
-  sha256 "978f22dd7d77a98e2149df08b93b2ad665d88e44a38f68b01396a03e829c326c"
+  version "1.6.2"
+  sha256 "dc5a31fe76838d2fa5e3d6bb96d4c823ad910a407004133c2177976276e70617"
 
-  url "https://menubarx-1251679148.file.myqcloud.com/download/MenubarX-#{version.csv.first}.dmg",
+  url "https://menubarx-1251679148.file.myqcloud.com/download/MenubarX-#{version}.dmg",
       verified: "menubarx-1251679148.file.myqcloud.com/download/"
   name "MenubarX"
   desc "Menu bar browser"
@@ -10,7 +10,7 @@ cask "menubarx" do
 
   livecheck do
     url "https://menubarx.app/appcast.xml"
-    strategy :sparkle
+    strategy :sparkle, &:short_version
   end
 
   auto_updates true

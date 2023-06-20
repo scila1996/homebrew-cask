@@ -5,19 +5,19 @@ cask "deepl" do
 
     livecheck do
       url "https://appdownload.deepl.com/macos/update.json"
-      strategy :page_match do |page|
-        JSON.parse(page)["currentRelease"]
+      strategy :json do |json|
+        json["currentRelease"]
       end
     end
   end
   on_big_sur :or_newer do
-    version "4.0.332521"
-    sha256 "f851cad1680d7f5280f6ced8bef559d61e6a8c6664d1bcdb0d82e167f8ca7b0e"
+    version "4.3.460560"
+    sha256 "3eecdc650e30732e7152d60b064f90359c31388899d2717eb388a891d0acd02a"
 
     livecheck do
       url "https://appdownload.deepl.com/macos/bigsur/update.json"
-      strategy :page_match do |page|
-        JSON.parse(page)["currentRelease"]
+      strategy :json do |json|
+        json["currentRelease"]
       end
     end
   end

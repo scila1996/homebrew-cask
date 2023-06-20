@@ -1,19 +1,19 @@
 cask "fastscripts" do
-  version "3.2.4,1738"
-  sha256 "d87fd08482254551a4a972a52b86b0831e7b6b66c7a4ffac8626a0f9a479d85c"
+  version "3.2.7"
+  sha256 "bd88ca14b468ef59b327ce8e5ed7ed6e33e841314419d9298a2b46ca6c75c098"
 
-  url "https://redsweater.com/fastscripts/FastScripts#{version.csv.first}.zip"
+  url "https://redsweater.com/fastscripts/FastScripts#{version}.zip"
   name "FastScripts"
   desc "Tool for running time-saving scripts"
   homepage "https://redsweater.com/fastscripts/"
 
   livecheck do
     url "https://redsweater.com/fastscripts/appcast#{version.major}.php"
-    strategy :sparkle
+    strategy :sparkle, &:short_version
   end
 
   auto_updates true
-  depends_on macos: ">= :sierra"
+  depends_on macos: ">= :mojave"
 
   app "FastScripts.app"
 

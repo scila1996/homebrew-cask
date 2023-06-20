@@ -1,6 +1,6 @@
 cask "popo" do
-  version "3.64.0,1673863149885"
-  sha256 "15a01dd3a3439f5ae07377bdcdeb41b0f515ea63805152cddf4cd3df8693e93a"
+  version "3.74.0,1686570483482"
+  sha256 "c1f9cc33c9fdcc8d5ea50c568d457cb4926c6218a508d9e6f153add53fca6a3a"
 
   url "https://popo.netease.com/file/popomac/POPO-setup_prod_#{version.csv.second}.dmg"
   name "NetEase POPO"
@@ -10,7 +10,7 @@ cask "popo" do
   livecheck do
     url "https://popo.netease.com/api/open/jsonp/check_version?device=4&callback="
     strategy :page_match do |page|
-      match = page.match(/"version"\s*:\s*"(\d+(?:\.\d+)+)".*?(\d+)\.dmg/i)
+      match = page.match(/["']version["']\s*:\s*["'](\d+(?:\.\d+)+)["'].*?(\d+)\.dmg/i)
       next if match.blank?
 
       "#{match[1]},#{match[2]}"

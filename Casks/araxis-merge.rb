@@ -8,8 +8,8 @@ cask "araxis-merge" do
     end
   end
   on_catalina :or_newer do
-    version "2022.5809"
-    sha256 "d71e85e710d30c993fd06c283cdce54cfc026bec698224c8525c977c502d993b"
+    version "2023.5915"
+    sha256 "8e9372f56a3597bdea49caadab1f11e998d8686c5e2d19472ec9470db643032e"
 
     livecheck do
       url "https://www.araxis.com/merge/download.en"
@@ -25,17 +25,15 @@ cask "araxis-merge" do
   depends_on macos: ">= :mojave"
 
   app "Araxis Merge.app"
-  binary "#{appdir}/Araxis Merge.app/Contents/Utilities/araxisgitdiff"
-  binary "#{appdir}/Araxis Merge.app/Contents/Utilities/araxisopendiff"
-  binary "#{appdir}/Araxis Merge.app/Contents/Utilities/araxissvndiff"
-  binary "#{appdir}/Araxis Merge.app/Contents/Utilities/compare", target: "araxiscompare"
-  binary "#{appdir}/Araxis Merge.app/Contents/Utilities/araxisgitmerge"
-  binary "#{appdir}/Araxis Merge.app/Contents/Utilities/araxisp4diff"
-  binary "#{appdir}/Araxis Merge.app/Contents/Utilities/araxissvndiff3"
-  binary "#{appdir}/Araxis Merge.app/Contents/Utilities/compare2", target: "araxiscompare2"
   binary "#{appdir}/Araxis Merge.app/Contents/Utilities/araxishgmerge"
+  binary "#{appdir}/Araxis Merge.app/Contents/Utilities/araxisopendiff"
+  binary "#{appdir}/Araxis Merge.app/Contents/Utilities/araxisp4diff"
   binary "#{appdir}/Araxis Merge.app/Contents/Utilities/araxisp4winmrg"
+  binary "#{appdir}/Araxis Merge.app/Contents/Utilities/araxissvndiff"
+  binary "#{appdir}/Araxis Merge.app/Contents/Utilities/araxissvndiff3"
   binary "#{appdir}/Araxis Merge.app/Contents/Utilities/araxissvnmerge"
+  binary "#{appdir}/Araxis Merge.app/Contents/Utilities/compare", target: "araxiscompare"
+  binary "#{appdir}/Araxis Merge.app/Contents/Utilities/compare2", target: "araxiscompare2"
 
   zap trash: [
     "~/Library/Preferences/com.araxis.merge.LSSharedFileList.plist",

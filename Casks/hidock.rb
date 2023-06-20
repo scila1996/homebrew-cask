@@ -1,15 +1,15 @@
 cask "hidock" do
-  version "1.0.1,629"
-  sha256 "874095f3eb1281a1ed4822d4875723daa5cfbb5a248e2c84102bfc58f2b4453e"
+  version "1.2"
+  sha256 "643b609ac5407746a020e211f028a212eb217a35a1f2cebb66557737acf1cbb6"
 
-  url "https://hidock.app/HiDock_#{version.csv.first}.zip"
+  url "https://hidock.app/HiDock_#{version}.zip"
   name "HiDock"
   desc "Set custom Dock settings for when on different displays"
   homepage "https://hidock.app/"
 
   livecheck do
     url "https://hidock.app/appcast.xml"
-    strategy :sparkle
+    strategy :sparkle, &:short_version
   end
 
   auto_updates true

@@ -1,9 +1,9 @@
 cask "zoom" do
   arch arm: "arm64/"
 
-  version "5.13.6.14918"
-  sha256 arm:   "48d82e18ecc8d5bdd0162a0a15e2c8ab2a63b53035e45d3d33c61d76f45e7fb6",
-         intel: "11215a1d45a282f4b6f1be38c156ede276e621bb13ea28fd1e93a07fd51ce1ce"
+  version "5.14.10.19202"
+  sha256 arm:   "c5e344ee6010215967042a428ece58b44a720f0aa32d307ea52ede6c3d7c61d4",
+         intel: "598dc99817cd78100b254efd2b132a5280a39aef4c350f3cc5b0bfd007db7c84"
 
   url "https://cdn.zoom.us/prod/#{version}/#{arch}Zoom.pkg"
   name "Zoom.us"
@@ -25,14 +25,14 @@ cask "zoom" do
     # This is because `open "$APP_PATH"&` is called from the postinstall
     # script of the package and we don't want any user intervention there.
     retries ||= 3
-    ohai "The Zoom package postinstall script launches the Zoom app" unless retries < 3
-    ohai "Attempting to close zoom.us.app to avoid unwanted user intervention" unless retries < 3
+    ohai "The Zoom package postinstall script launches the Zoom app" if retries >= 3
+    ohai "Attempting to close zoom.us.app to avoid unwanted user intervention" if retries >= 3
     return unless system_command "/usr/bin/pkill", args: ["-f", "/Applications/zoom.us.app"]
 
-    rescue RuntimeError
-      sleep 1
-      retry unless (retries -= 1).zero?
-      opoo "Unable to forcibly close zoom.us.app"
+  rescue RuntimeError
+    sleep 1
+    retry unless (retries -= 1).zero?
+    opoo "Unable to forcibly close zoom.us.app"
   end
 
   uninstall signal:    ["KILL", "us.zoom.xos"],

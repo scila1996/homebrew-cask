@@ -1,6 +1,6 @@
 cask "fme" do
-  version "2022.2.2,22782"
-  sha256 "ee57933da4976abb4af9081cdf64c9f3a6e96cde73a24f566e6b6f97e290b93e"
+  version "2022.2.6,22800"
+  sha256 "f28c0235423afa9d19c308c8d35cc0908e0ebf7579c3e566f0b2ac245df33310"
 
   url "https://downloads.safe.com/fme/#{version.major}/fme-desktop-#{version.csv.first}-b#{version.csv.second}-macosx-x64.pkg"
   name "FME Desktop"
@@ -8,7 +8,7 @@ cask "fme" do
   homepage "https://www.safe.com/"
 
   livecheck do
-    url "https://www.safe.com/api/downloads/"
+    url "https://engage.safe.com/support/downloads/"
     strategy :page_match do |page|
       match = page.match(/fme-desktop-(\d+(?:\.\d+)+)-b(\d+)-macosx-x64\.pkg/i)
       next if match.blank?

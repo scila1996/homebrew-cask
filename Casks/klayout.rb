@@ -1,8 +1,8 @@
 cask "klayout" do
-  version "0.28.3"
+  version "0.28.9"
 
   on_catalina :or_older do
-    sha256 "aa9d1de4cfbaeadc37ec3c47a3185319abdf36cdd854c4d259da5e36f48c277e"
+    sha256 "57ad9ad969ed8e83f4ca8c4e06ae09e15ecd28f83d7f2e698f7927c4c0800d5d"
 
     url "https://www.klayout.org/downloads/MacOS/HW-klayout-#{version}-macOS-Catalina-1-qt5Brew-RsysPhb39.dmg",
         verified: "klayout.org/downloads/MacOS/"
@@ -13,7 +13,7 @@ cask "klayout" do
     end
   end
   on_big_sur do
-    sha256 "a2843c628adb822c643d46af5a5ff8399e441922b916faba8cf40dc477f5228a"
+    sha256 "b6c8868b86df0efcb973ef4b2f515c7233ca822fe52928538f0a40543ec29104"
 
     url "https://www.klayout.org/downloads/MacOS/HW-klayout-#{version}-macOS-BigSur-1-qt5Brew-RsysPhb39.dmg",
         verified: "klayout.org/downloads/MacOS/"
@@ -24,7 +24,7 @@ cask "klayout" do
     end
   end
   on_monterey do
-    sha256 "c0c462f4f0f306cb252acd97e24b105e5a64734f3b97ad0d4ab2c91749a714bf"
+    sha256 "8db93709b39e4ec0ec252f23a774a803e00163fc11ce4a9d85b696306ee33249"
 
     url "https://www.klayout.org/downloads/MacOS/HW-klayout-#{version}-macOS-Monterey-1-qt5Brew-RsysPhb39.dmg",
         verified: "klayout.org/downloads/MacOS/"
@@ -35,7 +35,7 @@ cask "klayout" do
     end
   end
   on_ventura :or_newer do
-    sha256 "2c94770b3e363ccb17236fda61d184afc1744d1e206651b81ab6d26fcb47feb0"
+    sha256 "d0e211d5109309736d7f290a53149f7fe7647afe38fbdaf9a37df618648da4c8"
 
     url "https://www.klayout.org/downloads/MacOS/HW-klayout-#{version}-macOS-Ventura-1-qt5Brew-RsysPhb39.dmg",
         verified: "klayout.org/downloads/MacOS/"
@@ -61,4 +61,6 @@ cask "klayout" do
 
   uninstall pkgutil: "klayout.de",
             quit:    "klayout.de"
+
+  zap trash: "~/.klayout"
 end

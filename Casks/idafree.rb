@@ -1,9 +1,9 @@
 cask "idafree" do
   arch arm: "arm_"
 
-  version "8.2"
-  sha256 arm:   "08f10c8509056d04e21d79f04a5428441cd20dda275d8d20529bd08d7d7a9831",
-         intel: "06c5dbb2093b09d27bcbe609dcd094b8c09a4b88bcb2909adb2b85b9ea68072d"
+  version "8.3"
+  sha256 arm:   "a3407687ebd4cf9a17c9002565b751e23b17a700383623cd122353a21dde7ce6",
+         intel: "e1c679dbf6518c4b25d86d84572aa215c998281d4f61b99affa65a9583c0ee11"
 
   url "https://out7.hex-rays.com/files/#{arch}idafree#{version.no_dots}_mac.app.zip"
   name "IDA Free"
@@ -27,4 +27,6 @@ cask "idafree" do
     args:       ["--mode", "unattended"],
     sudo:       true,
   }
+
+  zap trash: "~/Library/Saved Application State/com.hexrays.ida64.savedState"
 end

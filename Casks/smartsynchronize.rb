@@ -1,9 +1,9 @@
 cask "smartsynchronize" do
   arch arm: "aarch64", intel: "x86_64"
 
-  version "4.3.2"
-  sha256 arm:   "7d8ba82910c3afedced60bb2bcb6f9b0a0727dcfe3b158c93b7c74739ef09d88",
-         intel: "83b91e8708674c4ed5dd2dce790c322aedf9df5ddc642ce47e7760a8de0b2c92"
+  version "4.4.3"
+  sha256 arm:   "e6ef5c6c274fe6ec24f3b5a00ddb1163d34a4e32dd74d3ab60f9c5ebef722bd0",
+         intel: "2889be8741b74e44300afbd195e0be601889a663675821592426348c17c44a9f"
 
   url "https://www.syntevo.com/downloads/smartsynchronize/smartsynchronize-#{arch}-#{version.dots_to_underscores}.dmg"
   name "SmartSynchronize"
@@ -20,8 +20,14 @@ cask "smartsynchronize" do
     end
   end
 
-  depends_on macos: ">= :el_capitan"
+  depends_on macos: ">= :mojave"
 
   app "SmartSynchronize.app"
   binary "#{appdir}/SmartSynchronize.app/Contents/MacOS/SmartSynchronize"
+
+  zap trash: [
+    "~/Library/Preferences/com.syntevo.smartsynchronize.plist",
+    "~/Library/Preferences/SmartSynchronize",
+    "~/Library/Saved Application State/com.syntevo.smartsynchronize.savedState",
+  ]
 end

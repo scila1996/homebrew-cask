@@ -1,9 +1,9 @@
 cask "dbeaver-enterprise" do
   arch arm: "aarch64", intel: "x86_64"
 
-  version "22.3.0"
-  sha256 arm:   "7f6732da67885b5441920dd2818a0656f8f670c0845b1f269e379c08b92c4fc8",
-         intel: "34c25d3da39b69b9417916815a3ef812adecdc8b648ef2f7173c8be321233da4"
+  version "23.1.0"
+  sha256 arm:   "02cb3568f79afa436781283ee4c86644f0460a32304988ac5aea9643648a5503",
+         intel: "8694a8148694c4759e13a5bd400fd9b1933eceb624a56fd4ccd27ec5f5ea236c"
 
   url "https://dbeaver.com/files/#{version}/dbeaver-ee-#{version}-macos-#{arch}.dmg"
   name "DBeaver Enterprise Edition"

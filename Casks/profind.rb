@@ -1,6 +1,6 @@
 cask "profind" do
-  version "1.20.0,12003"
-  sha256 "1428a4691f047b3ba4e6858f574f2ccb04508341c6f9360c3fc0c3dc5b8e2c74"
+  version "1.24"
+  sha256 "7ccbdcffda081b3ae6350dd1b837513035935d9f88837dee04cbf3baf1d516a0"
 
   url "https://www.zeroonetwenty.com/profind/downloads/ProFind#{version.major_minor.no_dots}.dmg"
   name "ProFind"
@@ -9,7 +9,7 @@ cask "profind" do
 
   livecheck do
     url "https://www.zeroonetwenty.com/profind/downloads/ProFindVersionInfo.xml"
-    strategy :sparkle
+    strategy :sparkle, &:short_version
   end
 
   depends_on macos: ">= :catalina"

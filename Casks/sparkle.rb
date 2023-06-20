@@ -1,6 +1,6 @@
 cask "sparkle" do
-  version "2.3.1"
-  sha256 "5f07032732736981b3244bbdca140886ef0d07a3149140de2cf78bbfaa070a75"
+  version "2.4.2"
+  sha256 "64ca2b157eb94dfad6580ccb98192b48cd008076b8e72ee6a02d753595f0c731"
 
   url "https://github.com/sparkle-project/Sparkle/releases/download/#{version}/Sparkle-#{version}.tar.xz",
       verified: "github.com/sparkle-project/Sparkle/"
@@ -15,4 +15,12 @@ cask "sparkle" do
 
   app "Sparkle Test App.app"
   binary "sparkle.app/Contents/MacOS/sparkle"
+
+  zap trash: [
+    "~/Library/Application Scripts/org.sparkle-project.Downloader",
+    "~/Library/Application Scripts/org.sparkle-project.SparkleTestApp",
+    "~/Library/Containers/org.sparkle-project.Downloader",
+    "~/Library/Containers/org.sparkle-project.SparkleTestApp",
+    "~/Library/Preferences/org.sparkle-project.SparkleTestApp.plist",
+  ]
 end

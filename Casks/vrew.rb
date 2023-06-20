@@ -1,9 +1,9 @@
 cask "vrew" do
-  version "0.13.17"
-  sha256 "2d2ab12c662a63dead2c1ce5b68f4a1bf2e228ea8b63e21c3c53523951bc94fd"
+  version "1.0.11"
+  sha256 "e029c7823b584500cca91ae2818a8497fe3cae7b57c359b40a18b9aa8c06d4a0"
 
   url "https://vrew-files.voyagerx.com/Vrew-#{version}.dmg"
-  name "vrew"
+  name "Vrew"
   desc "Video editor"
   homepage "https://vrew.voyagerx.com/"
 

@@ -1,15 +1,15 @@
 cask "dropzone" do
-  version "4.5.6,1893"
-  sha256 "ec01504b2d007d5a4fd0e59907e8eb9e854a55b0588f616539fa798a04cacc68"
+  version "4.6.1"
+  sha256 "e6694e3f91708bb8907fe9da1cce7cc7c60e1e0db6e9425ef5f0fe7750f01226"
 
-  url "https://aptonic.com/releases/Dropzone-#{version.csv.first}.zip"
+  url "https://aptonic.com/releases/Dropzone-#{version}.zip"
   name "Dropzone"
   desc "Productivity app"
   homepage "https://aptonic.com/"
 
   livecheck do
     url "https://aptonic.com/releases/updates.xml"
-    strategy :sparkle
+    strategy :sparkle, &:short_version
   end
 
   auto_updates true

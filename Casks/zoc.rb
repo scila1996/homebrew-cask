@@ -1,6 +1,6 @@
 cask "zoc" do
-  version "8.05.0"
-  sha256 "737adec851ba0d4fd5e6a44d3918dee85b13ffa301da0ae30496ba4e8ca2ea44"
+  version "8.06.1"
+  sha256 "ce78b882e9c93ab25d1d86dde6ee22726995dcbbdd951e953613533f3e01ac9e"
 
   url "https://www.emtec.com/downloads/zoc/zoc#{version.no_dots}.dmg"
   name "ZOC"
@@ -13,4 +13,13 @@ cask "zoc" do
   end
 
   app "zoc#{version.major}.app"
+
+  zap trash: [
+    "~/Library/Application Support/ZOC#{version.major} Files",
+    "~/Library/Logs/EmTec_ZOC_Assert.log",
+    "~/Library/Logs/ZOC",
+    "~/Library/Preferences/com.emtec.zoc7.plist",
+    "~/Library/Preferences/com.emtec.zoc#{version.major}.plist",
+    "~/Library/Saved Application State/com.emtec.zoc#{version.major}.savedState",
+  ]
 end

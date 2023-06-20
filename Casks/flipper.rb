@@ -1,6 +1,6 @@
 cask "flipper" do
-  version "0.177.0"
-  sha256 "b703adb74231d7454cfda9b8265e9b7e724fc74049f29b5311e9ebcf709101b2"
+  version "0.200.0"
+  sha256 "fe8e52b84e624137522e3d96aa2bc58bee8174a34619c6de675d7d86cc7584b9"
 
   url "https://github.com/facebook/flipper/releases/download/v#{version}/Flipper-mac.dmg",
       verified: "github.com/facebook/flipper/"
@@ -10,8 +10,8 @@ cask "flipper" do
 
   livecheck do
     url "https://www.facebook.com/fbflipper/public/latest.json?version=0.0.0"
-    strategy :page_match do |page|
-      JSON.parse(page)["version"]
+    strategy :json do |json|
+      json["version"]
     end
   end
 
